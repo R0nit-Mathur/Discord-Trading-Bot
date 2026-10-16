@@ -41,6 +41,19 @@ class Card:
     def active(self):
         return self.state == 'active' and self.expires > time.time()
 
+    def summary(self, catalog):
+        if self.state == 'locked':
+            status = '🔒 **Closed by a moderator**'
+        elif self.state == 'closed':
+            status = '✅ **Trade closed**'
+        elif not self.active():
+            status = '⌛ **Trade expired**'
+        else:
+            status = '📣 **Trade available**'
+        return (f'{status}\n<@{self.seller}> is offering **{catalog.display(self.offered)}** '
+                f'and wants **{catalog.display(self.wanted)}**.\n'
+                'Use **Trade / DM** to contact the trader, or **Manage offer** to update your listing.')
+
     def validate(self, catalog):
         validate_basket(catalog, self.offered)
         if self.wanted:

@@ -33,10 +33,10 @@ Text fields in the private Edit items form accept names, named shortcodes or map
 
 ## Built-in controls — no uploads needed
 
-- ✨ Create offer opens a private builder.
+- ✨ Create trade opens a private builder.
 - 🔎 Find sellers opens item search.
 - 📋 My offers lists your active cards.
-- 💬 Contact trader shows the seller's profile and a copyable DM message.
+- 💬 Trade / DM shows the seller's profile and a copyable DM message.
 - ⚙️ Manage offer opens owner controls.
 - ✅ An owner's reaction on their bot-published card closes it. A non-owner's tick is ignored. The bot saves closed status in the card; removing a tick does not reopen it. Renew explicitly for a fresh card.
 - 🔄 Renew publishes a new 24-hour card and closes the old one.

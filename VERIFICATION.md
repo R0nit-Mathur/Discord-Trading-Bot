@@ -1,8 +1,12 @@
 # Trading Desk verification
 
-The interaction-marketplace build passed **45 offline tests** on Python 3.14.5 / discord.py 2.6.4.
+The interaction-marketplace build passed **48 offline tests** on Python 3.14.5 / discord.py 2.6.4.
 
 The tests cover:
+
+- Test-channel override replaces old publish destinations.
+- Startup entry panel publishes text, embed and Create trade controls, then reuses an existing panel on reconnect.
+- Published offers contain both a plain-text offered/wanted summary and an embed with Trade / DM controls.
 
 - No Message Content, Member or Presence privileged intents requested.
 - Persistent public panel/card button IDs; private builder ownership and requirement-confirmation gate.

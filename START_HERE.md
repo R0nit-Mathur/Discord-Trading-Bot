@@ -2,6 +2,17 @@
 
 This version uses **Discord interactions and bot-authored trade cards**, so it does not require Message Content approval. It does not request Server Members or Presence access either.
 
+
+## Testing now: one channel for the desk and offers
+
+The default testing destination is **1550152526333092030**. On startup the bot searches its own messages in that channel and reuses the Trading Desk, or posts one if missing. Each offer is sent there as a text summary plus an embed card with Trade / DM and Manage offer buttons.
+
+Deploy the latest commit; no extra setting is required for this default. For clarity you may set `TEST_CHANNEL_ID=1550152526333092030` in Render. This setting overrides `TRADING_CHANNEL_IDS` while active. Both `/setup` and `/panel` refuse other destinations during testing.
+
+Give the bot View Channel, Read Message History, Send Messages and Embed Links in the test channel. The channel must belong to the configured `GUILD_ID` server. If setup is invalid, `/ready` reports not configured and logs explain the missing access.
+
+When finished, set `TEST_CHANNEL_ID=off` and use your intended `TRADING_CHANNEL_IDS`. The manual `/panel` announcement flow below applies when testing mode is off.
+
 ## Upgrade your existing Render service
 
 1. Deploy the latest commit on the GitHub repository's `main` branch.
@@ -12,7 +23,7 @@ This version uses **Discord interactions and bot-authored trade cards**, so it d
 6. Open your Render service URL and `/ready`. Both `discord_ready` and `configured` should be true.
 7. In Discord, run `/status`. It should say **Trading Desk • no privileged intents** and show your configured trading channel and mapped spellbook count.
 8. Run `/panel`, selecting the **trading announcement channel**, then pin the posted Trading Desk.
-9. Click Create offer or use `/offer`, finish the private builder and publish your first card.
+9. Click Create trade or use `/offer`, finish the private builder and publish your first card.
 
 The announcement channel is for the entry panel. The `TRADING_CHANNEL_IDS` variable should contain channels where published trade cards should appear. Do not add the announcement channel unless it should also receive offers.
 
@@ -22,6 +33,7 @@ The announcement channel is for the entry panel. The `TRADING_CHANNEL_IDS` varia
 DISCORD_TOKEN=YOUR_PRIVATE_TOKEN_ENTERED_ONLY_IN_RENDER
 GUILD_ID=YOUR_DISCORD_SERVER_ID
 TRADING_CHANNEL_IDS=YOUR_TRADING_CHANNEL_ID
+TEST_CHANNEL_ID=1550152526333092030
 DATABASE_PATH=:memory:
 SYNC_COMMANDS=1
 EMOJI_MAP_JSON={}
@@ -44,7 +56,7 @@ Members with Manage Server can run `/panel` and configuration commands. Members 
 
 A permanent announcement message with four buttons:
 
-- **Create offer**: opens a private builder.
+- **Create trade**: opens a private builder.
 - **Find sellers**: opens an item-search form and matching-item menu.
 - **My offers**: private active-card list.
 - **Rules**: private game restrictions and guidelines.
@@ -63,7 +75,7 @@ Only after Publish/Save does the public board change. The draft lasts 15 minutes
 
 The card shows the trader, offered/wanted items with quantities and spellbook emojis, optional Roblox username, open/closed status and expiry.
 
-- **Contact trader**: private response with the trader's profile and copyable DM text. The user opens the profile and chooses Message. The bot doesn't send the DM and can't override disabled DMs/blocks.
+- **Trade / DM**: private response with the trader's profile and copyable DM text. The user opens the profile and chooses Message. The bot doesn't send the DM and can't override disabled DMs/blocks.
 - **Manage offer**: owner-only Edit, Renew and Close controls. Moderators can close other members' offers but cannot edit/renew them.
 - Author reacting ✅ closes the whole card. Other users' ✅ reactions are ignored.
 
@@ -115,11 +127,11 @@ Use `/health` for Render's health check. A sleeping Gateway bot cannot receive `
 
 1. Confirm Render logs show Ready as … and no PrivilegedIntentsRequired exception.
 2. `/status` shows the intended trading channel and 16/16 books when correctly named/uploaded.
-3. Post the panel with `/panel` in announcements; verify members can click Create offer.
+3. Post the panel with `/panel` in announcements; verify members can click Create trade.
 4. Select Time and Light, confirm requirements and publish. Verify only one public card is created even if Publish is clicked twice.
 5. Add `Ancient Sap x250` through Edit items; check quantities and original expiry.
 6. Search Time: the card appears. Search Light: it does not appear as a Light seller.
-7. Contact trader as another member: the profile/DM draft is private; no automatic DM is sent.
+7. Trade / DM as another member: the profile/DM draft is private; no automatic DM is sent.
 8. React ✅ as a different member: no closure. React as the owner: the card closes and disappears from search.
 9. Try editing or renewing someone else's card: denied. Try a moderator close: permitted, then seller renewal denied.
 10. Restart Render. Old panel/card buttons still work. Search reconstructs open cards and keeps closed cards closed.

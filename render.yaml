@@ -15,6 +15,8 @@ services:
         sync: false
       - key: TRADING_CHANNEL_IDS
         sync: false
+      - key: TEST_CHANNEL_ID
+        value: '1550152526333092030'
       - key: DATABASE_PATH
         value: ':memory:'
       - key: SYNC_COMMANDS

@@ -116,10 +116,44 @@ class FlowTests(unittest.IsolatedAsyncioTestCase):
         channel.permissions_for.return_value=NS(view_channel=True,read_message_history=True,send_messages=True,embed_links=True)
         guild=NS(id=1,me=NS(id=777),get_channel=lambda x:channel if x==10 else None,
                  emojis=[NS(id=111,name='cl_book_time')])
-        with patch.dict(os.environ,{'GUILD_ID':'1','TRADING_CHANNEL_IDS':'10','EMOJI_MAP_JSON':'{}'}),patch.object(self.client,'get_guild',return_value=guild):
+        with patch.dict(os.environ,{'GUILD_ID':'1','TRADING_CHANNEL_IDS':'10','TEST_CHANNEL_ID':'off','EMOJI_MAP_JSON':'{}'}),patch.object(self.client,'get_guild',return_value=guild):
             self.client.restore_configuration()
         self.assertTrue(self.client.configured)
         self.assertEqual(app.store.mapping(1),{'111':'time'})
+
+    async def test_testing_configuration_replaces_old_publish_destinations(self):
+        target=int(app.DEFAULT_TEST_CHANNEL)
+        channel=Mock(spec=app.discord.TextChannel)
+        channel.id=target
+        channel.permissions_for.return_value=NS(view_channel=True,read_message_history=True,send_messages=True,embed_links=True)
+        guild=NS(id=1,me=NS(id=777),get_channel=lambda x:channel if x==target else None,emojis=[])
+        with patch.dict(os.environ,{'GUILD_ID':'1','TRADING_CHANNEL_IDS':'10','TEST_CHANNEL_ID':str(target),'EMOJI_MAP_JSON':'{}'}),patch.object(self.client,'get_guild',return_value=guild):
+            self.client.restore_configuration()
+        self.assertTrue(self.client.configured)
+        self.assertEqual(app.store.channels(1),[str(target)])
+
+    async def test_entry_panel_posts_text_embed_and_create_trade_button(self):
+        async def history(**kwargs):
+            if False:
+                yield
+        posted=NS(id=200)
+        channel=NS(id=int(app.DEFAULT_TEST_CHANNEL),history=history,send=AsyncMock(return_value=posted))
+        result=await self.client.ensure_desk(channel)
+        self.assertEqual(result,posted)
+        data=channel.send.await_args.kwargs
+        self.assertIn('Create trade',data['content'])
+        self.assertEqual(data['embed'].title,app.DESK_TITLE)
+        self.assertIn('Create trade',[c.label for c in data['view'].children])
+
+    async def test_entry_panel_reused_after_restart_instead_of_duplicated(self):
+        panel=NS(author=NS(id=777),webhook_id=None,embeds=[NS(title=app.DESK_TITLE)],edit=AsyncMock())
+        async def history(**kwargs):
+            yield panel
+        channel=NS(id=int(app.DEFAULT_TEST_CHANNEL),history=history,send=AsyncMock())
+        result=await self.client.ensure_desk(channel)
+        self.assertIs(result,panel)
+        panel.edit.assert_awaited_once()
+        channel.send.assert_not_awaited()
 
     async def test_loading_search_does_not_claim_empty_market(self):
         inter=NS(guild_id=1,response=NS(defer=AsyncMock()),followup=NS(send=AsyncMock()))

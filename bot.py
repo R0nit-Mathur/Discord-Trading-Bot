@@ -26,6 +26,29 @@ catalog = Catalog(ROOT/'catalog.json')
 db_path = Path(os.getenv('DATABASE_PATH', ':memory:'))
 store = Store(':memory:' if str(db_path)==':memory:' else db_path if db_path.is_absolute() else ROOT/db_path)
 log = logging.getLogger('clover')
+DEFAULT_TEST_CHANNEL = '1550152526333092030'
+DESK_TITLE = '🍀 Clover Trading Desk'
+
+
+def test_channel_id():
+    value = os.getenv('TEST_CHANNEL_ID',DEFAULT_TEST_CHANNEL).strip()
+    if value.lower() in ('','off','0'):
+        return None
+    if not value.isdigit():
+        raise InvalidOffer('TEST_CHANNEL_ID must be a Discord text channel ID, or off to disable testing mode.')
+    return int(value)
+
+
+def desk_embed():
+    e=discord.Embed(title=DESK_TITLE,colour=0x38BD96,
+                    description='**Create a trade in a few clicks.**\n\n✨ **Create trade** — pick what you offer and what you want in a private form, then publish here.\n🔎 **Find sellers** — search current trades.\n📋 **My offers** — edit, renew or close your trades.\n\nEach published trade has a **Trade / DM** button. Negotiate in DMs and exchange items in-game.')
+    e.set_footer(text='Level 100+ • 9 slots per side • Trade spare bag copies only')
+    return e
+
+
+DESK_MESSAGE = ('🍀 **Trading desk is open!**\n'
+                'Click **Create trade** below. Tell us what you are offering and what you want, '
+                'then publish your trade in this channel.')
 RULES = ('Both players must be level 100+. Each side has 9 slots; a material stack uses one slot. '
          'Trade spare, unequipped spellbooks from your bag only; Robux-bought books cannot be traded. '
          'The recipient needs free bag space for books. Any in-game offer change resets both Accept buttons. '
@@ -59,6 +82,7 @@ class Clover(discord.Client):
         self.user_locks = {}
         self.published = {}
         self.semaphore = asyncio.Semaphore(4)
+        self.desk_lock = asyncio.Lock()
 
     async def setup_hook(self):
         self.add_view(DeskView())
@@ -88,10 +112,20 @@ class Clover(discord.Client):
         if not guild:
             log.error('GUILD_ID must identify a server containing this bot.')
             return
-        channels = [v.strip() for v in os.getenv('TRADING_CHANNEL_IDS','').split(',') if v.strip()]
+        try:
+            testing = test_channel_id()
+        except InvalidOffer as error:
+            log.error('%s',error)
+            return
+        channels = [str(testing)] if testing else [v.strip() for v in os.getenv('TRADING_CHANNEL_IDS','').split(',') if v.strip()]
         if not channels:
             log.error('Set TRADING_CHANNEL_IDS in Render Environment.')
             return
+        # Remove previously enabled destinations on reconnect while testing is active.
+        if testing:
+            for old in store.channels(guild.id):
+                if old not in channels:
+                    store.configure(guild.id,old,False)
         for value in channels:
             channel = guild.get_channel(int(value)) if value.isdigit() else None
             if not isinstance(channel, discord.TextChannel):
@@ -122,6 +156,26 @@ class Clover(discord.Client):
         for cid in list(self.history_index.checked):
             self.history_index.invalidate(cid)
         log.info('Ready as %s — Trading Desk; no privileged intents requested.',self.user)
+        testing = test_channel_id()
+        if self.configured and testing:
+            try:
+                channel = self.get_channel(testing)
+                await self.ensure_desk(channel)
+            except discord.HTTPException:
+                log.exception('Could not post/reuse the testing Trading Desk. Check channel permissions.')
+
+    async def ensure_desk(self,channel):
+        async with self.desk_lock:
+            # Search own messages so cold starts don't create duplicate entry panels.
+            # Reading our own messages needs no privileged Message Content access.
+            async for message in channel.history(limit=None,oldest_first=False):
+                if message.author.id==self.user.id and not getattr(message,'webhook_id',None) and any(e.title==DESK_TITLE for e in message.embeds):
+                    await message.edit(content=DESK_MESSAGE,embed=desk_embed(),view=DeskView())
+                    log.info('Reused Trading Desk in testing channel %s',channel.id)
+                    return message
+            message = await channel.send(content=DESK_MESSAGE,embed=desk_embed(),view=DeskView())
+            log.info('Posted Trading Desk in testing channel %s',channel.id)
+            return message
 
     def health_status(self):
         return {'service':'clover-trading','mode':'interaction-marketplace','discord_ready':self.is_ready(),
@@ -193,7 +247,7 @@ class Clover(discord.Client):
             return None
 
     async def save(self,source,card):
-        await source.edit(embed=card.embed(catalog,self.emojis(source.guild)),view=CardView())
+        await source.edit(content=card.summary(catalog),embed=card.embed(catalog,self.emojis(source.guild)),view=CardView())
         self.remember(source,card)
 
     async def source_for(self,interaction,value):
@@ -233,7 +287,7 @@ class Clover(discord.Client):
                     raise InvalidOffer('You already have this offer on the board. Manage or renew that card instead.')
             card = Card(interaction.user.id,interaction.user.display_name,dict(offered),dict(wanted),now,roblox=roblox)
             # Publish only to an explicitly configured channel, never the announcement/panel channel by accident.
-            source = await channels[0].send(embed=card.embed(catalog,self.emojis(interaction.guild)),view=CardView())
+            source = await channels[0].send(content=card.summary(catalog),embed=card.embed(catalog,self.emojis(interaction.guild)),view=CardView())
             self.remember(source,card)
             self.published[interaction.user.id]=now
             if renew_source:
@@ -325,7 +379,7 @@ class DeskView(SafeView):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(label='Create offer',emoji='✨',style=discord.ButtonStyle.success,custom_id='clover:desk:create:v2')
+    @discord.ui.button(label='Create trade',emoji='✨',style=discord.ButtonStyle.success,custom_id='clover:desk:create:v2')
     async def create(self,interaction,button):
         await open_builder(interaction)
 
@@ -346,7 +400,7 @@ class CardView(SafeView):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(label='Contact trader',emoji='💬',style=discord.ButtonStyle.primary,custom_id='clover:card:contact:v2')
+    @discord.ui.button(label='Trade / DM',emoji='💬',style=discord.ButtonStyle.primary,custom_id='clover:card:contact:v2')
     async def contact(self,interaction,button):
         await interaction.response.defer(ephemeral=True)
         source = await interaction.message.fetch()
@@ -717,10 +771,10 @@ async def rules(interaction:discord.Interaction):
 @app_commands.checks.has_permissions(manage_guild=True)
 async def panel(interaction:discord.Interaction,channel:discord.TextChannel):
     await interaction.response.defer(ephemeral=True)
-    e=discord.Embed(title='🍀 Clover Trading Desk',colour=0x38BD96,
-                    description='**Find your next trade.**\n\n✨ **Create offer** — choose items privately, preview and publish.\n🔎 **Find sellers** — search current offers.\n📋 **My offers** — edit, renew or close your cards.\n\nNegotiate in DMs. Trade in-game. No private ticket channels needed.')
-    e.set_footer(text='Level 100+ • 9 slots per side • Trade spare bag copies only')
-    source=await channel.send(embed=e,view=DeskView())
+    testing=test_channel_id()
+    if testing and channel.id!=testing:
+        raise InvalidOffer(f'Testing mode is active. Use the testing channel {testing}; offers and the desk stay there.')
+    source=await bot.ensure_desk(channel)
     await interaction.followup.send(f'Trading Desk posted: {source.jump_url}\nPin it so members can find it. Its buttons work after bot restarts.',ephemeral=True)
 
 
@@ -729,6 +783,9 @@ async def panel(interaction:discord.Interaction,channel:discord.TextChannel):
 @app_commands.default_permissions(manage_guild=True)
 @app_commands.checks.has_permissions(manage_guild=True)
 async def setup(interaction:discord.Interaction,channel:discord.TextChannel,enabled:bool=True):
+    testing=test_channel_id()
+    if testing and enabled and channel.id!=testing:
+        raise InvalidOffer(f'Testing mode only publishes to channel {testing}. Set TEST_CHANNEL_ID=off in Render when testing is finished.')
     perms=channel.permissions_for(interaction.guild.me)
     if enabled and not all([perms.view_channel,perms.read_message_history,perms.send_messages,perms.embed_links]):
         raise InvalidOffer('Give the bot View Channel, Read Message History, Send Messages and Embed Links first.')

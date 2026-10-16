@@ -9,13 +9,13 @@ Members don't create a ticket channel. They create a private, temporary draft fr
 ## Member journey
 
 ```text
-Trading Desk / Create offer
+Trading Desk / Create trade
     ↓ private preview and spellbook menus
 Edit items / quantities + optional Roblox username
     ↓ confirmation of game trade requirements
 Publish to trading channel
     ↓
-Buyer searches → opens card → Contact trader → profile + copyable DM text
+Buyer searches → opens card → Trade / DM → profile + copyable DM text
     ↓
 Members negotiate in DMs and trade inside Clover Legends
     ↓
@@ -40,7 +40,7 @@ The card itself preserves edited and closed status; no hidden base64 payload or 
 
 ## Search and rendering
 
-`/search` accepts an item name, alias or mapped custom emoji and provides autocomplete. The panel's Find sellers form provides a matching-item dropdown when several names match. Results are private, limited to channels the requester can read and to items actually offered. They link directly to public cards, where Contact trader starts the DM handoff.
+`/search` accepts an item name, alias or mapped custom emoji and provides autocomplete. The panel's Find sellers form provides a matching-item dropdown when several names match. Results are private, limited to channels the requester can read and to items actually offered. They link directly to public cards, where Trade / DM starts the DM handoff.
 
 Loading jobs are shared per channel, successful history scans stay warm for two minutes, and incomplete results are identified. Each search checks up to 25 newest candidate sources. Cards remain readable when a service sleeps, but buttons/commands require the bot to be running.
 
@@ -48,4 +48,4 @@ Loading jobs are shared per channel, successful history scans stay warm for two 
 
 One process serves HTTP health/readiness and Discord Gateway. No privileged intents are requested, so the application can connect without the blocked Message Content grant. A sleeping Render service still needs an HTTP visit to wake; Discord Gateway buttons do not wake it. The health page documents this limit.
 
-The previous natural-message indexing implementation is replaced, not silently retained. Community members must publish cards through Create offer or `/offer`. No cross-user DMs are read; there are no per-deal private channels, automated unsolicited messages, real-money transfers, inventory verification, trade counters or shop stock feed.
+The previous natural-message indexing implementation is replaced, not silently retained. Community members must publish cards through Create trade or `/offer`. No cross-user DMs are read; there are no per-deal private channels, automated unsolicited messages, real-money transfers, inventory verification, trade counters or shop stock feed.

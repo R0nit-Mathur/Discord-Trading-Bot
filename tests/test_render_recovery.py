@@ -191,6 +191,11 @@ class RecoveryTests(unittest.IsolatedAsyncioTestCase):
         results=await asyncio.gather(self.client.publish(inter,{'time':1},{'light':1}),self.client.publish(inter,{'time':1},{'light':1}),return_exceptions=True)
         channel.send.assert_awaited_once()
         self.assertEqual(sum(isinstance(r,InvalidOffer) for r in results),1)
+        sent=channel.send.await_args.kwargs
+        self.assertIn('Time ×1',sent['content'])
+        self.assertIn('Light ×1',sent['content'])
+        self.assertEqual(sent['embed'].title,'Clover Legends • Trade')
+        self.assertIn('Trade / DM',[c.label for c in sent['view'].children])
 
     async def test_renewed_card_survives_cold_restart_without_receipts(self):
         old=card_message(100,Card(2,'Trader',{'time':1},{'light':1},time.time()-4000))
