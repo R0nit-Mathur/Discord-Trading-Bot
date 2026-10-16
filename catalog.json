@@ -1,0 +1,1390 @@
+{
+  "game_name": "Clover Legends",
+  "catalog_source": "User-supplied tradeability table, 2026-10-15",
+  "stack_policy": "Materials and keys count as a single stack per item; maximum stack capacities were not supplied. Spellbooks and accessories count per copy.",
+  "items": [
+    {
+      "id": "blue_herb",
+      "name": "Blue Herb",
+      "category": "Materials \u00b7 Tier 1",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_blue_herb",
+      "enabled": true
+    },
+    {
+      "id": "boar_meat",
+      "name": "Boar Meat",
+      "category": "Materials \u00b7 Tier 1",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_boar_meat",
+      "enabled": true
+    },
+    {
+      "id": "clear_water",
+      "name": "Clear Water",
+      "category": "Materials \u00b7 Tier 1",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_clear_water",
+      "enabled": true
+    },
+    {
+      "id": "green_herb",
+      "name": "Green Herb",
+      "category": "Materials \u00b7 Tier 1",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_green_herb",
+      "enabled": true
+    },
+    {
+      "id": "honey",
+      "name": "Honey",
+      "category": "Materials \u00b7 Tier 1",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_honey",
+      "enabled": true
+    },
+    {
+      "id": "wild_berries",
+      "name": "Wild Berries",
+      "category": "Materials \u00b7 Tier 1",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_wild_berries",
+      "enabled": true
+    },
+    {
+      "id": "carp",
+      "name": "Carp",
+      "category": "Materials \u00b7 Tier 1",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_carp",
+      "enabled": true
+    },
+    {
+      "id": "minnow",
+      "name": "Minnow",
+      "category": "Materials \u00b7 Tier 1",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_minnow",
+      "enabled": true
+    },
+    {
+      "id": "iron",
+      "name": "Iron",
+      "category": "Materials \u00b7 Tier 1",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_iron",
+      "enabled": true
+    },
+    {
+      "id": "gale_feathers",
+      "name": "Gale Feathers",
+      "category": "Materials \u00b7 Tier 2",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_gale_feathers",
+      "enabled": true
+    },
+    {
+      "id": "wind_seeds",
+      "name": "Wind Seeds",
+      "category": "Materials \u00b7 Tier 2",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_wind_seeds",
+      "enabled": true
+    },
+    {
+      "id": "earth_root",
+      "name": "Earth Root",
+      "category": "Materials \u00b7 Tier 2",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_earth_root",
+      "enabled": true
+    },
+    {
+      "id": "honeycomb",
+      "name": "Honeycomb",
+      "category": "Materials \u00b7 Tier 2",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_honeycomb",
+      "enabled": true
+    },
+    {
+      "id": "stone_crust",
+      "name": "Stone Crust",
+      "category": "Materials \u00b7 Tier 2",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_stone_crust",
+      "enabled": true
+    },
+    {
+      "id": "river_trout",
+      "name": "River Trout",
+      "category": "Materials \u00b7 Tier 2",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_river_trout",
+      "enabled": true
+    },
+    {
+      "id": "gold",
+      "name": "Gold",
+      "category": "Materials \u00b7 Tier 2",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_gold",
+      "enabled": true
+    },
+    {
+      "id": "spirit_moss",
+      "name": "Spirit Moss",
+      "category": "Materials \u00b7 Tier 3",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_spirit_moss",
+      "enabled": true
+    },
+    {
+      "id": "ancient_sap",
+      "name": "Ancient Sap",
+      "category": "Materials \u00b7 Tier 3",
+      "aliases": [
+        "Sap"
+      ],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_ancient_sap",
+      "enabled": true
+    },
+    {
+      "id": "diamond",
+      "name": "Diamond",
+      "category": "Materials \u00b7 Tier 3",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_diamond",
+      "enabled": true
+    },
+    {
+      "id": "golden_koi",
+      "name": "Golden Koi",
+      "category": "Materials \u00b7 Tier 3",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_golden_koi",
+      "enabled": true
+    },
+    {
+      "id": "mana_eel",
+      "name": "Mana Eel",
+      "category": "Materials \u00b7 Tier 3",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_mana_eel",
+      "enabled": true
+    },
+    {
+      "id": "golden_leaf",
+      "name": "Golden Leaf",
+      "category": "Materials \u00b7 Tier 4",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_golden_leaf",
+      "enabled": true
+    },
+    {
+      "id": "mana_crystal",
+      "name": "Mana Crystal",
+      "category": "Materials \u00b7 Tier 4",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_mana_crystal",
+      "enabled": true
+    },
+    {
+      "id": "phoenix_fish",
+      "name": "Phoenix Fish",
+      "category": "Materials \u00b7 Tier 4",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_phoenix_fish",
+      "enabled": true
+    },
+    {
+      "id": "rockfish",
+      "name": "Rockfish",
+      "category": "Materials \u00b7 Tier 4",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_rockfish",
+      "enabled": true
+    },
+    {
+      "id": "thunderfin",
+      "name": "Thunderfin",
+      "category": "Materials \u00b7 Tier 4",
+      "aliases": [],
+      "kind": "material",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_thunderfin",
+      "enabled": true
+    },
+    {
+      "id": "boss_key",
+      "name": "Boss Key",
+      "category": "Keys",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_boss_key",
+      "enabled": true
+    },
+    {
+      "id": "dungeon_key",
+      "name": "Dungeon Key",
+      "category": "Keys",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": null,
+      "emoji_id": null,
+      "emoji_name": "cl_item_dungeon_key",
+      "enabled": true
+    },
+    {
+      "id": "fire",
+      "name": "Fire",
+      "category": "Spellbooks \u00b7 Common",
+      "aliases": [
+        "Fire Spellbook",
+        "Fire Book",
+        "Fire Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_fire",
+      "enabled": true
+    },
+    {
+      "id": "water",
+      "name": "Water",
+      "category": "Spellbooks \u00b7 Common",
+      "aliases": [
+        "Water Spellbook",
+        "Water Book",
+        "Water Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_water",
+      "enabled": true
+    },
+    {
+      "id": "wind",
+      "name": "Wind",
+      "category": "Spellbooks \u00b7 Common",
+      "aliases": [
+        "Wind Spellbook",
+        "Wind Book",
+        "Wind Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_wind",
+      "enabled": true
+    },
+    {
+      "id": "chain",
+      "name": "Chain",
+      "category": "Spellbooks \u00b7 Rare",
+      "aliases": [
+        "Chain Spellbook",
+        "Chain Book",
+        "Chain Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_chain",
+      "enabled": true
+    },
+    {
+      "id": "earth",
+      "name": "Earth",
+      "category": "Spellbooks \u00b7 Rare",
+      "aliases": [
+        "Earth Spellbook",
+        "Earth Book",
+        "Earth Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_earth",
+      "enabled": true
+    },
+    {
+      "id": "lightning",
+      "name": "Lightning",
+      "category": "Spellbooks \u00b7 Rare",
+      "aliases": [
+        "Lightning Spellbook",
+        "Lightning Book",
+        "Lightning Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_lightning",
+      "enabled": true
+    },
+    {
+      "id": "mercury",
+      "name": "Mercury",
+      "category": "Spellbooks \u00b7 Rare",
+      "aliases": [
+        "Mercury Spellbook",
+        "Mercury Book",
+        "Mercury Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_mercury",
+      "enabled": true
+    },
+    {
+      "id": "plant",
+      "name": "Plant",
+      "category": "Spellbooks \u00b7 Rare",
+      "aliases": [
+        "Plant Spellbook",
+        "Plant Book",
+        "Plant Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_plant",
+      "enabled": true
+    },
+    {
+      "id": "poison",
+      "name": "Poison",
+      "category": "Spellbooks \u00b7 Rare",
+      "aliases": [
+        "Poison Spellbook",
+        "Poison Book",
+        "Poison Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_poison",
+      "enabled": true
+    },
+    {
+      "id": "blood",
+      "name": "Blood",
+      "category": "Spellbooks \u00b7 Legendary",
+      "aliases": [
+        "Blood Spellbook",
+        "Blood Book",
+        "Blood Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_blood",
+      "enabled": true
+    },
+    {
+      "id": "dark",
+      "name": "Dark",
+      "category": "Spellbooks \u00b7 Legendary",
+      "aliases": [
+        "Dark Spellbook",
+        "Dark Book",
+        "Dark Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_dark",
+      "enabled": true
+    },
+    {
+      "id": "elder_tree",
+      "name": "Elder Tree",
+      "category": "Spellbooks \u00b7 Legendary",
+      "aliases": [
+        "Elder Tree Spellbook",
+        "Elder Tree Book",
+        "Elder Tree Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_elder_tree",
+      "enabled": true
+    },
+    {
+      "id": "null_magic",
+      "name": "Null Magic",
+      "category": "Spellbooks \u00b7 Mythical",
+      "aliases": [
+        "Null Magic Spellbook",
+        "Null Magic Book",
+        "Null"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_null_magic",
+      "enabled": true
+    },
+    {
+      "id": "light",
+      "name": "Light",
+      "category": "Spellbooks \u00b7 Mythical",
+      "aliases": [
+        "Light Spellbook",
+        "Light Book",
+        "Light Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_light",
+      "enabled": true
+    },
+    {
+      "id": "star",
+      "name": "Star",
+      "category": "Spellbooks \u00b7 Mythical",
+      "aliases": [
+        "Star Spellbook",
+        "Star Book",
+        "Star Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_star",
+      "enabled": true
+    },
+    {
+      "id": "time",
+      "name": "Time",
+      "category": "Spellbooks \u00b7 Mythical",
+      "aliases": [
+        "Time Spellbook",
+        "Time Book",
+        "Time Magic"
+      ],
+      "kind": "spellbook",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_book_time",
+      "enabled": true
+    },
+    {
+      "id": "black_headband",
+      "name": "Black Headband",
+      "category": "Accessories \u00b7 Forge",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_black_headband",
+      "enabled": true
+    },
+    {
+      "id": "witchs_hat",
+      "name": "Witch's Hat",
+      "category": "Accessories \u00b7 Forge",
+      "aliases": [
+        "Witchs Hat"
+      ],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_witchs_hat",
+      "enabled": true
+    },
+    {
+      "id": "hex_skullcap",
+      "name": "Hex Skullcap",
+      "category": "Accessories \u00b7 Forge",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_hex_skullcap",
+      "enabled": true
+    },
+    {
+      "id": "trickster_mask",
+      "name": "Trickster Mask",
+      "category": "Accessories \u00b7 Forge",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_trickster_mask",
+      "enabled": true
+    },
+    {
+      "id": "black_shoulder_mantle",
+      "name": "Black Shoulder Mantle",
+      "category": "Accessories \u00b7 Forge",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_black_shoulder_mantle",
+      "enabled": true
+    },
+    {
+      "id": "blue_robe",
+      "name": "Blue Robe",
+      "category": "Accessories \u00b7 Forge",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_blue_robe",
+      "enabled": true
+    },
+    {
+      "id": "thread_witch_scarf",
+      "name": "Thread Witch Scarf",
+      "category": "Accessories \u00b7 Forge",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_thread_witch_scarf",
+      "enabled": true
+    },
+    {
+      "id": "mirror_mage_tunic",
+      "name": "Mirror Mage Tunic",
+      "category": "Accessories \u00b7 Forge",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_mirror_mage_tunic",
+      "enabled": true
+    },
+    {
+      "id": "wayfarers_cloak",
+      "name": "Wayfarer's Cloak",
+      "category": "Accessories \u00b7 Forge",
+      "aliases": [
+        "Wayfarers Cloak"
+      ],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_wayfarers_cloak",
+      "enabled": true
+    },
+    {
+      "id": "dark_cross_earring",
+      "name": "Dark Cross Earring",
+      "category": "Accessories \u00b7 Season 1 pass",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_dark_cross_earring",
+      "enabled": true
+    },
+    {
+      "id": "cotton_pig_hat",
+      "name": "Cotton Pig Hat",
+      "category": "Accessories \u00b7 Season 1 pass",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_cotton_pig_hat",
+      "enabled": true
+    },
+    {
+      "id": "blood_magic_aura",
+      "name": "Blood Magic Aura",
+      "category": "Accessories \u00b7 Season 1 pass",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_blood_magic_aura",
+      "enabled": true
+    },
+    {
+      "id": "thorn_rose_beret",
+      "name": "Thorn Rose Beret",
+      "category": "Accessories \u00b7 Season 1 pass",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_thorn_rose_beret",
+      "enabled": true
+    },
+    {
+      "id": "sylvan_mask",
+      "name": "Sylvan Mask",
+      "category": "Accessories \u00b7 Season 1 pass",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_sylvan_mask",
+      "enabled": true
+    },
+    {
+      "id": "silver_royal_tiara",
+      "name": "Silver Royal Tiara",
+      "category": "Accessories \u00b7 Season 1 pass",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_silver_royal_tiara",
+      "enabled": true
+    },
+    {
+      "id": "dawn_vanguard_cloak",
+      "name": "Dawn Vanguard Cloak",
+      "category": "Accessories \u00b7 Season 1 pass",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_dawn_vanguard_cloak",
+      "enabled": true
+    },
+    {
+      "id": "archmage_aura",
+      "name": "Archmage Aura",
+      "category": "Accessories \u00b7 Season 1 pass",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_archmage_aura",
+      "enabled": true
+    },
+    {
+      "id": "knights_hat",
+      "name": "Knight's Hat",
+      "category": "Accessories \u00b7 Season 2 pass",
+      "aliases": [
+        "Knights Hat"
+      ],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_knights_hat",
+      "enabled": true
+    },
+    {
+      "id": "zephyr_laureate",
+      "name": "Zephyr Laureate",
+      "category": "Accessories \u00b7 Season 2 pass",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_zephyr_laureate",
+      "enabled": true
+    },
+    {
+      "id": "poison_alchemist_hood",
+      "name": "Poison Alchemist Hood",
+      "category": "Accessories \u00b7 Season 2 pass",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_poison_alchemist_hood",
+      "enabled": true
+    },
+    {
+      "id": "mirror_lense_visor",
+      "name": "Mirror Lense Visor",
+      "category": "Accessories \u00b7 Season 2 pass",
+      "aliases": [
+        "Mirror Lens Visor"
+      ],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_mirror_lense_visor",
+      "enabled": true
+    },
+    {
+      "id": "meteor_aura",
+      "name": "Meteor Aura",
+      "category": "Accessories \u00b7 Season 2 pass",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_meteor_aura",
+      "enabled": true
+    },
+    {
+      "id": "ice_queen_aura",
+      "name": "Ice Queen Aura",
+      "category": "Accessories \u00b7 Season 2 pass",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_ice_queen_aura",
+      "enabled": true
+    },
+    {
+      "id": "flame_circlet",
+      "name": "Flame Circlet",
+      "category": "Accessories \u00b7 Dark Shop",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_flame_circlet",
+      "enabled": true
+    },
+    {
+      "id": "light_wing_headpiece",
+      "name": "Light Wing Headpiece",
+      "category": "Accessories \u00b7 Dark Shop",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_light_wing_headpiece",
+      "enabled": true
+    },
+    {
+      "id": "lion_pelt_hood",
+      "name": "Lion Pelt Hood",
+      "category": "Accessories \u00b7 Dark Shop",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_lion_pelt_hood",
+      "enabled": true
+    },
+    {
+      "id": "split_rune_mask",
+      "name": "Split Rune Mask",
+      "category": "Accessories \u00b7 Dark Shop",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_split_rune_mask",
+      "enabled": true
+    },
+    {
+      "id": "flame_robe",
+      "name": "Flame Robe",
+      "category": "Accessories \u00b7 Dark Shop",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_flame_robe",
+      "enabled": true
+    },
+    {
+      "id": "patchwork_spell_cloak",
+      "name": "Patchwork Spell Cloak",
+      "category": "Accessories \u00b7 Dark Shop",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_patchwork_spell_cloak",
+      "enabled": true
+    },
+    {
+      "id": "lion_pelt_mantle",
+      "name": "Lion Pelt Mantle",
+      "category": "Accessories \u00b7 Dark Shop",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_lion_pelt_mantle",
+      "enabled": true
+    },
+    {
+      "id": "radiant_sword_back_piece",
+      "name": "Radiant Sword Back Piece",
+      "category": "Accessories \u00b7 Dark Shop",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_radiant_sword_back_piece",
+      "enabled": true
+    },
+    {
+      "id": "eclipse_mask",
+      "name": "Eclipse Mask",
+      "category": "Accessories \u00b7 Codes",
+      "aliases": [],
+      "kind": "item",
+      "max_stack": 1,
+      "emoji_id": null,
+      "emoji_name": "cl_item_eclipse_mask",
+      "enabled": true
+    }
+  ],
+  "blocked_items": [
+    {
+      "name": "The book in your hands",
+      "category": "Spellbook restrictions",
+      "aliases": [
+        "the_book_in_your_hands"
+      ],
+      "reason": "Equipped spellbooks and spellbooks bought with Robux cannot be traded."
+    },
+    {
+      "name": "Equipped Spellbook",
+      "category": "Spellbook restrictions",
+      "aliases": [
+        "equipped_spellbook"
+      ],
+      "reason": "Equipped spellbooks and spellbooks bought with Robux cannot be traded."
+    },
+    {
+      "name": "Robux Spellbook",
+      "category": "Spellbook restrictions",
+      "aliases": [
+        "robux_spellbook"
+      ],
+      "reason": "Equipped spellbooks and spellbooks bought with Robux cannot be traded."
+    },
+    {
+      "name": "Books bought with Robux",
+      "category": "Spellbook restrictions",
+      "aliases": [
+        "books_bought_with_robux"
+      ],
+      "reason": "Equipped spellbooks and spellbooks bought with Robux cannot be traded."
+    },
+    {
+      "name": "Wind Spirit Aura",
+      "category": "Accessories \u00b7 Codes",
+      "aliases": [
+        "wind_spirit_aura"
+      ],
+      "reason": "This code reward cannot be traded."
+    },
+    {
+      "name": "Lucky Goggles",
+      "category": "Accessories \u00b7 Rank rewards",
+      "aliases": [
+        "lucky_goggles",
+        "Lucky Goggles (Rank 5)"
+      ],
+      "reason": "Rank rewards cannot be traded."
+    },
+    {
+      "name": "Lightning Aura",
+      "category": "Accessories \u00b7 Rank rewards",
+      "aliases": [
+        "lightning_aura",
+        "Lightning Aura (Rank 10)"
+      ],
+      "reason": "Rank rewards cannot be traded."
+    },
+    {
+      "name": "Fire Aura",
+      "category": "Accessories \u00b7 Rank rewards",
+      "aliases": [
+        "fire_aura",
+        "Fire Aura (Rank 15)"
+      ],
+      "reason": "Rank rewards cannot be traded."
+    },
+    {
+      "name": "Ember Cape",
+      "category": "Accessories \u00b7 Rank rewards",
+      "aliases": [
+        "ember_cape",
+        "Ember Cape (Rank 15)"
+      ],
+      "reason": "Rank rewards cannot be traded."
+    },
+    {
+      "name": "Tide Master's Coat",
+      "category": "Accessories \u00b7 Trials + VIP",
+      "aliases": [
+        "tide_masters_coat"
+      ],
+      "reason": "Trials and VIP rewards cannot be traded."
+    },
+    {
+      "name": "Tidal Aura",
+      "category": "Accessories \u00b7 Trials + VIP",
+      "aliases": [
+        "tidal_aura"
+      ],
+      "reason": "Trials and VIP rewards cannot be traded."
+    },
+    {
+      "name": "Spartan Helmet",
+      "category": "Accessories \u00b7 Trials + VIP",
+      "aliases": [
+        "spartan_helmet"
+      ],
+      "reason": "Trials and VIP rewards cannot be traded."
+    },
+    {
+      "name": "Spartan Aura",
+      "category": "Accessories \u00b7 Trials + VIP",
+      "aliases": [
+        "spartan_aura"
+      ],
+      "reason": "Trials and VIP rewards cannot be traded."
+    },
+    {
+      "name": "VIP Aura",
+      "category": "Accessories \u00b7 Trials + VIP",
+      "aliases": [
+        "vip_aura"
+      ],
+      "reason": "Trials and VIP rewards cannot be traded."
+    },
+    {
+      "name": "Fist Combat",
+      "category": "Weapons",
+      "aliases": [
+        "fist_combat"
+      ],
+      "reason": "Weapons cannot be traded."
+    },
+    {
+      "name": "Starter Sword",
+      "category": "Weapons",
+      "aliases": [
+        "starter_sword"
+      ],
+      "reason": "Weapons cannot be traded."
+    },
+    {
+      "name": "Sunbreaker",
+      "category": "Weapons",
+      "aliases": [
+        "sunbreaker"
+      ],
+      "reason": "Weapons cannot be traded."
+    },
+    {
+      "name": "Tideblade",
+      "category": "Weapons",
+      "aliases": [
+        "tideblade"
+      ],
+      "reason": "Weapons cannot be traded."
+    },
+    {
+      "name": "Starter Broom",
+      "category": "Brooms",
+      "aliases": [
+        "starter_broom",
+        "Starter"
+      ],
+      "reason": "Brooms cannot be traded."
+    },
+    {
+      "name": "Wind Broom",
+      "category": "Brooms",
+      "aliases": [
+        "wind_broom"
+      ],
+      "reason": "Brooms cannot be traded."
+    },
+    {
+      "name": "Nature Broom",
+      "category": "Brooms",
+      "aliases": [
+        "nature_broom",
+        "Nature"
+      ],
+      "reason": "Brooms cannot be traded."
+    },
+    {
+      "name": "Frost Broom",
+      "category": "Brooms",
+      "aliases": [
+        "frost_broom",
+        "Frost"
+      ],
+      "reason": "Brooms cannot be traded."
+    },
+    {
+      "name": "Flame Broom",
+      "category": "Brooms",
+      "aliases": [
+        "flame_broom",
+        "Flame"
+      ],
+      "reason": "Brooms cannot be traded."
+    },
+    {
+      "name": "Sheep Cloud",
+      "category": "Brooms",
+      "aliases": [
+        "sheep_cloud",
+        "Sheep Cloud Broom"
+      ],
+      "reason": "Brooms cannot be traded."
+    },
+    {
+      "name": "Shadow Broom",
+      "category": "Brooms",
+      "aliases": [
+        "shadow_broom",
+        "Shadow"
+      ],
+      "reason": "Brooms cannot be traded."
+    },
+    {
+      "name": "Golden Royal",
+      "category": "Brooms",
+      "aliases": [
+        "golden_royal",
+        "Golden Royal Broom"
+      ],
+      "reason": "Brooms cannot be traded."
+    },
+    {
+      "name": "Flying Cloud",
+      "category": "Brooms",
+      "aliases": [
+        "flying_cloud",
+        "Flying Cloud Broom"
+      ],
+      "reason": "Brooms cannot be traded."
+    },
+    {
+      "name": "Danger Skull",
+      "category": "Brooms",
+      "aliases": [
+        "danger_skull",
+        "Danger Skull Broom"
+      ],
+      "reason": "Brooms cannot be traded."
+    },
+    {
+      "name": "Spell Pages",
+      "category": "Items",
+      "aliases": [
+        "spell_pages"
+      ],
+      "reason": "This item cannot be traded."
+    },
+    {
+      "name": "Healing Potion",
+      "category": "Items",
+      "aliases": [
+        "healing_potion"
+      ],
+      "reason": "This item cannot be traded."
+    },
+    {
+      "name": "Mana Potion",
+      "category": "Items",
+      "aliases": [
+        "mana_potion"
+      ],
+      "reason": "This item cannot be traded."
+    },
+    {
+      "name": "Common Chest",
+      "category": "Items",
+      "aliases": [
+        "common_chest"
+      ],
+      "reason": "This item cannot be traded."
+    },
+    {
+      "name": "Rare Chest",
+      "category": "Items",
+      "aliases": [
+        "rare_chest"
+      ],
+      "reason": "This item cannot be traded."
+    },
+    {
+      "name": "Legendary Chest",
+      "category": "Items",
+      "aliases": [
+        "legendary_chest"
+      ],
+      "reason": "This item cannot be traded."
+    },
+    {
+      "name": "Mythical Chest",
+      "category": "Items",
+      "aliases": [
+        "mythical_chest"
+      ],
+      "reason": "This item cannot be traded."
+    },
+    {
+      "name": "Race Reroll",
+      "category": "Items",
+      "aliases": [
+        "race_reroll"
+      ],
+      "reason": "This item cannot be traded."
+    },
+    {
+      "name": "Trait Reroll",
+      "category": "Items",
+      "aliases": [
+        "trait_reroll"
+      ],
+      "reason": "This item cannot be traded."
+    },
+    {
+      "name": "Cooked fish",
+      "category": "Items",
+      "aliases": [
+        "cooked_fish",
+        "Cooked Carp",
+        "Cooked Minnow",
+        "Cooked River Trout",
+        "Cooked Golden Koi",
+        "Cooked Mana Eel",
+        "Cooked Phoenix Fish",
+        "Cooked Rockfish",
+        "Cooked Thunderfin"
+      ],
+      "reason": "This item cannot be traded."
+    },
+    {
+      "name": "Rookie Fishing Rod",
+      "category": "Tools",
+      "aliases": [
+        "rookie_fishing_rod"
+      ],
+      "reason": "Tools cannot be traded."
+    },
+    {
+      "name": "Fisherman Fishing Rod",
+      "category": "Tools",
+      "aliases": [
+        "fisherman_fishing_rod"
+      ],
+      "reason": "Tools cannot be traded."
+    },
+    {
+      "name": "Veteran Fishing Rod",
+      "category": "Tools",
+      "aliases": [
+        "veteran_fishing_rod"
+      ],
+      "reason": "Tools cannot be traded."
+    },
+    {
+      "name": "Stone Pickaxe",
+      "category": "Tools",
+      "aliases": [
+        "stone_pickaxe"
+      ],
+      "reason": "Tools cannot be traded."
+    },
+    {
+      "name": "Iron Pickaxe",
+      "category": "Tools",
+      "aliases": [
+        "iron_pickaxe"
+      ],
+      "reason": "Tools cannot be traded."
+    },
+    {
+      "name": "Gold Pickaxe",
+      "category": "Tools",
+      "aliases": [
+        "gold_pickaxe"
+      ],
+      "reason": "Tools cannot be traded."
+    },
+    {
+      "name": "Coins",
+      "category": "Currencies",
+      "aliases": [
+        "coins"
+      ],
+      "reason": "Currencies cannot be traded."
+    },
+    {
+      "name": "Gems",
+      "category": "Currencies",
+      "aliases": [
+        "gems"
+      ],
+      "reason": "Currencies cannot be traded."
+    },
+    {
+      "name": "Boss Tokens",
+      "category": "Currencies",
+      "aliases": [
+        "boss_tokens"
+      ],
+      "reason": "Currencies cannot be traded."
+    },
+    {
+      "name": "Dungeon Tokens",
+      "category": "Currencies",
+      "aliases": [
+        "dungeon_tokens"
+      ],
+      "reason": "Currencies cannot be traded."
+    },
+    {
+      "name": "Event Tickets",
+      "category": "Currencies",
+      "aliases": [
+        "event_tickets"
+      ],
+      "reason": "Currencies cannot be traded."
+    },
+    {
+      "name": "Race",
+      "category": "Account",
+      "aliases": [
+        "race"
+      ],
+      "reason": "Account perks and attributes cannot be traded."
+    },
+    {
+      "name": "Trait",
+      "category": "Account",
+      "aliases": [
+        "trait"
+      ],
+      "reason": "Account perks and attributes cannot be traded."
+    },
+    {
+      "name": "Titles",
+      "category": "Account",
+      "aliases": [
+        "titles"
+      ],
+      "reason": "Account perks and attributes cannot be traded."
+    },
+    {
+      "name": "XP boost",
+      "category": "Account",
+      "aliases": [
+        "xp_boost"
+      ],
+      "reason": "Account perks and attributes cannot be traded."
+    },
+    {
+      "name": "Luck boost",
+      "category": "Account",
+      "aliases": [
+        "luck_boost"
+      ],
+      "reason": "Account perks and attributes cannot be traded."
+    },
+    {
+      "name": "Bag slots",
+      "category": "Account",
+      "aliases": [
+        "bag_slots"
+      ],
+      "reason": "Account perks and attributes cannot be traded."
+    },
+    {
+      "name": "Season pass",
+      "category": "Account",
+      "aliases": [
+        "season_pass"
+      ],
+      "reason": "Account perks and attributes cannot be traded."
+    }
+  ],
+  "offer_separator_emoji_ids": [],
+  "open_offer_emoji_ids": []
+}

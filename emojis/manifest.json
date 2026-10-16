@@ -1,0 +1,162 @@
+[
+  {
+    "item": "fire",
+    "emoji_name": "cl_book_fire",
+    "file": "ready/cl_book_fire.png",
+    "source": "Screenshot 2026-10-15 at 7.01.05\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 226343,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "water",
+    "emoji_name": "cl_book_water",
+    "file": "ready/cl_book_water.png",
+    "source": "Screenshot 2026-10-15 at 7.01.15\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 226400,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "wind",
+    "emoji_name": "cl_book_wind",
+    "file": "ready/cl_book_wind.png",
+    "source": "Screenshot 2026-10-15 at 7.01.23\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 224227,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "earth",
+    "emoji_name": "cl_book_earth",
+    "file": "ready/cl_book_earth.png",
+    "source": "Screenshot 2026-10-15 at 7.01.33\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 218505,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "lightning",
+    "emoji_name": "cl_book_lightning",
+    "file": "ready/cl_book_lightning.png",
+    "source": "Screenshot 2026-10-15 at 7.01.50\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 229084,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "chain",
+    "emoji_name": "cl_book_chain",
+    "file": "ready/cl_book_chain.png",
+    "source": "Screenshot 2026-10-15 at 7.02.01\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 237433,
+    "identity": "user-confirmed"
+  },
+  {
+    "item": "plant",
+    "emoji_name": "cl_book_plant",
+    "file": "ready/cl_book_plant.png",
+    "source": "Screenshot 2026-10-15 at 7.02.13\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 228816,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "poison",
+    "emoji_name": "cl_book_poison",
+    "file": "ready/cl_book_poison.png",
+    "source": "Screenshot 2026-10-15 at 7.02.20\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 238720,
+    "identity": "user-confirmed"
+  },
+  {
+    "item": "time",
+    "emoji_name": "cl_book_time",
+    "file": "ready/cl_book_time.png",
+    "source": "Screenshot 2026-10-15 at 7.02.32\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 219426,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "star",
+    "emoji_name": "cl_book_star",
+    "file": "ready/cl_book_star.png",
+    "source": "Screenshot 2026-10-15 at 7.02.41\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 251231,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "light",
+    "emoji_name": "cl_book_light",
+    "file": "ready/cl_book_light.png",
+    "source": "Screenshot 2026-10-15 at 7.02.55\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 234553,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "null_magic",
+    "emoji_name": "cl_book_null_magic",
+    "file": "ready/cl_book_null_magic.png",
+    "source": "Screenshot 2026-10-15 at 7.03.01\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 224847,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "mercury",
+    "emoji_name": "cl_book_mercury",
+    "file": "ready/cl_book_mercury.png",
+    "source": "Screenshot 2026-10-15 at 7.03.11\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 234005,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "dark",
+    "emoji_name": "cl_book_dark",
+    "file": "ready/cl_book_dark.png",
+    "source": "Screenshot 2026-10-15 at 7.03.20\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 236470,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "blood",
+    "emoji_name": "cl_book_blood",
+    "file": "ready/cl_book_blood.png",
+    "source": "Screenshot 2026-10-15 at 7.03.26\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 205299,
+    "identity": "matched to provided artwork"
+  },
+  {
+    "item": "elder_tree",
+    "emoji_name": "cl_book_elder_tree",
+    "file": "ready/cl_book_elder_tree.png",
+    "source": "Screenshot 2026-10-15 at 7.03.33\u202fPM.png",
+    "width": 392,
+    "height": 362,
+    "bytes": 239680,
+    "identity": "matched to provided artwork"
+  }
+]

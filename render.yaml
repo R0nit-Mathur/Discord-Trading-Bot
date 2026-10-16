@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: clover-trading
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.5
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: GUILD_ID
+        sync: false
+      - key: TRADING_CHANNEL_IDS
+        sync: false
+      - key: DATABASE_PATH
+        value: ':memory:'
+      - key: SYNC_COMMANDS
+        value: '1'
+      - key: EMOJI_MAP_JSON
+        value: '{}'
