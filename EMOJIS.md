@@ -23,32 +23,25 @@ Upload only the 16 PNGs in `emojis/ready/`. Name them exactly as below, without 
 
 `emojis/preview.html` shows the complete set. `emojis/manifest.json` records original screenshot filenames, dimensions and file sizes. Chain and Poison were explicitly confirmed by the user. The other books match the supplied artwork; moderators should review the preview before uploading.
 
-## Built-in emojis — no files to upload
+## Using the emojis in Trading Desk
 
-| Emoji | Meaning |
-|---|---|
-| ➡️ | Offer / want separator, equivalent to `=>` |
-| ❓ | Open to offers, equivalent to the word `offers` |
-| ✅ | Seller marks the whole post no longer available; react on the original post or edit it into the post |
-| 🔎 | Bot successfully indexed the offer |
-| ⚠️ | Bot could not index the offer; correct the item or format |
+The 16 spellbook menus show the uploaded emoji beside each book's name. Cards render the same mapped emoji beside readable item names and quantities. Names remain visible so offers stay understandable if an emoji is missing.
 
-Do not add ✅ just as decoration: it closes the whole post. Another user's reaction is ignored. The bot may mirror a seller’s close tick with its own ✅ so closure survives cache loss. Remove ✅ from the message and its seller reactions, then run `/renew`; the bot removes its own tick and posts a recoverable renewal receipt.
+Standard filenames map automatically each time the bot connects. `/emoji_sync apply:true` refreshes the session after uploads. `/emoji_bind` supports differently named existing server emojis; save those overrides in Render's `EMOJI_MAP_JSON` to survive sleep.
 
-If you already have custom artwork for the two markers, name it `cl_trade` or `cl_offers` and include it in `/emoji_sync`. No new marker PNGs are required or included: the built-in emojis work immediately.
+Text fields in the private Edit items form accept names, named shortcodes or mapped custom emojis. Examples for Items I offer: `Time x2 + Ancient Sap x250`, or `:cl_book_time: x2`. Items I want can be `Light x1`; blank means open to offers. These examples go into the builder, not ordinary channel messages.
 
-## Text and emoji examples
+## Built-in controls — no uploads needed
 
-```text
-:cl_book_time: ➡️ :cl_book_light:
-:cl_book_time: :cl_book_time: ➡️ ❓
-:cl_book_fire: + Ancient Sap x250 => :cl_book_blood:
-Time Spellbook x1 => Light Book x1
-```
+- ✨ Create offer opens a private builder.
+- 🔎 Find sellers opens item search.
+- 📋 My offers lists your active cards.
+- 💬 Contact trader shows the seller's profile and a copyable DM message.
+- ⚙️ Manage offer opens owner controls.
+- ✅ An owner's reaction on their bot-published card closes it. A non-owner's tick is ignored. The bot saves closed status in the card; removing a tick does not reopen it. Renew explicitly for a fresh card.
+- 🔄 Renew publishes a new 24-hour card and closes the old one.
 
-In Discord, select the uploaded emoji from the picker. The bot also supports literal named shortcodes in posts. Actual pasted custom emojis are identified by their saved Discord ID, not by trusting the displayed name. In this Render version, exact standard names map automatically each time Discord connects. `/emoji_sync apply:true` refreshes the current session immediately after uploads. Custom name overrides must be saved in Render’s `EMOJI_MAP_JSON` to survive sleep.
-
-`/search item:Time` and a pasted mapped Time emoji both resolve to the same item. Discord's autocomplete entries show text names and categories; custom image artwork is not a separate image field in autocomplete choices.
+No custom arrow/offers artwork is required; the builder separates offered/wanted fields and provides an Open to offers button. Ordinary member messages are not indexed in this version.
 
 ## Other items
 

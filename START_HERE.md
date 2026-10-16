@@ -1,116 +1,130 @@
-# Clover Trading — Render Free deployment
+# Launch Clover Trading Desk on Render
 
-This version runs as a Render **Web Service** with a health endpoint and a temporary in-memory search index. Discord channel history is the source of truth. No external database or persistent disk is required.
+This version uses **Discord interactions and bot-authored trade cards**, so it does not require Message Content approval. It does not request Server Members or Presence access either.
 
-## What sleep means
+## Upgrade your existing Render service
 
-Render Free can sleep after 15 minutes without inbound traffic. Opening its web URL wakes it; Render says waking can take about a minute. This bot connects outward to Discord's Gateway. A Discord slash command or a new trading post does not make an inbound request to Render, so neither can wake a sleeping bot.
+1. Deploy the latest commit on the GitHub repository's `main` branch.
+2. Keep the start command `python bot.py`, build command `pip install -r requirements.txt`, health path `/health`, and Free plan.
+3. Keep your private `DISCORD_TOKEN` directly in Render. Keep the existing `GUILD_ID` and `TRADING_CHANNEL_IDS`.
+4. Set `SYNC_COMMANDS=1` for this deployment. It registers the new `/offer` and `/panel` commands and updates the old ones. After you see the registration/ready log, set it to `0` and redeploy.
+5. In Discord Developer Portal, leave all three privileged intent switches OFF. This build never requests those intents. Leave Interactions Endpoint URL blank; do not put the health URL there.
+6. Open your Render service URL and `/ready`. Both `discord_ready` and `configured` should be true.
+7. In Discord, run `/status`. It should say **Trading Desk • no privileged intents** and show your configured trading channel and mapped spellbook count.
+8. Run `/panel`, selecting the **trading announcement channel**, then pin the posted Trading Desk.
+9. Click Create offer or use `/offer`, finish the private builder and publish your first card.
 
-Bookmark the service URL. Open it, check `/ready`, then return to Discord once `discord_ready` and `configured` are true. If a command was attempted while asleep, retry it after waking. The health endpoint is not an uptime guarantee or an automatic keep-alive service.
+The announcement channel is for the entry panel. The `TRADING_CHANNEL_IDS` variable should contain channels where published trade cards should appear. Do not add the announcement channel unless it should also receive offers.
 
-## 1. Upload the files to a GitHub repository
+## Environment variables
 
-Extract the ZIP. Create a private GitHub repository and upload the **contents** of `clover-trading-bot/` to the repository root. The root should contain `bot.py`, `core.py`, `recovery.py`, `health.py`, `catalog.json`, `requirements.txt`, and `render.yaml`.
+```dotenv
+DISCORD_TOKEN=YOUR_PRIVATE_TOKEN_ENTERED_ONLY_IN_RENDER
+GUILD_ID=YOUR_DISCORD_SERVER_ID
+TRADING_CHANNEL_IDS=YOUR_TRADING_CHANNEL_ID
+DATABASE_PATH=:memory:
+SYNC_COMMANDS=1
+EMOJI_MAP_JSON={}
+PYTHON_VERSION=3.14.5
+```
 
-Do not upload a `.env` file or your Discord token. The supplied ZIP contains neither. Render deploys from a Git repository; it does not execute an uploaded ZIP directly.
+For multiple trading channels, use comma-separated IDs. The publish destination is the first configured trading channel the member can view/read. Exact `cl_book_...` emoji names are mapped at every connection. Custom bindings require an `EMOJI_MAP_JSON` override saved in Render.
 
-## 2. Configure Discord
+Use Developer Mode in Discord to copy IDs. The Application ID/Public Key are not bot tokens or server IDs. No extra database, disk, webhook, HTTP-interactions endpoint, Roblox login or Studio access is needed.
 
-In your existing application's Developer Portal:
+## Permissions
 
-- **Bot → Privileged Gateway Intents:** enable **Message Content Intent**. Leave Member and Presence intents off.
-- Keep **Interactions Endpoint URL blank**: this is a Gateway bot, not an HTTP-interactions bot. Do not put `/health` there.
-- Invite with scopes `bot` and `applications.commands`.
-- Grant View Channel, Read Message History, Send Messages, Add Reactions, and Embed Links in every configured trading channel. Do not grant Administrator.
-- Copy the private **Bot Token** into Render's secret settings in the next step. Public Key and Application ID are not bot tokens.
+Install the app with `bot` and `applications.commands` scopes. Give the bot **View Channel, Read Message History, Send Messages and Embed Links** in the trading channels. Give it View Channel, Send Messages and Embed Links in the announcement channel where you post the panel. It doesn't need Administrator or access to member DMs.
 
-## 3. Create the Render service
+Members with Manage Server can run `/panel` and configuration commands. Members with Manage Messages can close someone else's card; the card becomes moderator-locked. Ordinary sellers cannot renew moderator-locked cards.
 
-Open Render → **New → Web Service**, connect the repository, and use:
+## What members see
 
-| Setting | Value |
+### Trading Desk
+
+A permanent announcement message with four buttons:
+
+- **Create offer**: opens a private builder.
+- **Find sellers**: opens an item-search form and matching-item menu.
+- **My offers**: private active-card list.
+- **Rules**: private game restrictions and guidelines.
+
+### Private builder
+
+- Two spellbook menus, **I offer** and **I want**, each with all 16 books and available server emojis.
+- **Edit items / quantities** form for text or mapped emojis. Examples: `Time x2 + Ancient Sap x250`; requested items `Light x1`. Blank requested items means open to offers.
+- Optional Roblox username (3–20 letters, numbers or underscores).
+- A private preview and requirement confirmation. Changing items resets the confirmation.
+- **Publish offer**, or Save changes when editing an existing card.
+
+Only after Publish/Save does the public board change. The draft lasts 15 minutes and is lost on restart; run `/offer` again if it expires. It is an ephemeral interaction, not a new Discord channel.
+
+### Public trade card
+
+The card shows the trader, offered/wanted items with quantities and spellbook emojis, optional Roblox username, open/closed status and expiry.
+
+- **Contact trader**: private response with the trader's profile and copyable DM text. The user opens the profile and chooses Message. The bot doesn't send the DM and can't override disabled DMs/blocks.
+- **Manage offer**: owner-only Edit, Renew and Close controls. Moderators can close other members' offers but cannot edit/renew them.
+- Author reacting ✅ closes the whole card. Other users' ✅ reactions are ignored.
+
+Closed cards remain visible with closed status; search excludes them. The Contact button refuses closed/expired cards. A tick is not evidence of a completed trade.
+
+## Commands
+
+| Command | Purpose |
 |---|---|
-| Runtime | Python |
-| Plan | Free |
-| Root directory | Leave blank when `bot.py` is at repository root |
-| Build command | `pip install -r requirements.txt` |
-| Start command | `python bot.py` |
-| Health check path | `/health` |
+| `/offer` | Open the private builder |
+| `/search item:` | Autocomplete by name/alias/mapped emoji and privately find sellers |
+| `/myoffers` | Active card links; use Manage offer on a card |
+| `/close message:` | Close an owned card by link/ID; moderators may close others |
+| `/renew message:` | Create a fresh 24-hour card and close the original |
+| `/items filter:` | Browse the catalog by name/category |
+| `/help`, `/rules` | Member instructions and restrictions |
+| `/panel channel:` | Manage Server: post the persistent Trading Desk |
+| `/setup channel: enabled:` | Manage Server: change session channels; save the resulting IDs in Render |
+| `/emoji_sync apply:` | Manage Server: preview/refresh standard name mappings |
+| `/emoji_bind emoji: item:` | Manage Server: map a custom emoji; save the shown override in Render |
+| `/status` | Manage Server: mode, channels, mapped books and scan state |
 
-Alternatively create a Render Blueprint from the included `render.yaml`. Check that the plan is Free before deploying.
+## Limits and recovery
 
-Add these Render **Environment** values:
+- Maximum **3 active offers per trader**, including renewals of previously closed cards.
+- Minimum **60 seconds between publications**. Active offers can be renewed after **30 minutes**. Closed/expired offers can be renewed subject to the publishing cooldown/active limit.
+- Identical active offers are rejected; manage the existing card instead.
+- Edits update the same card and preserve its original expiry. To extend expiry, renew.
+- Renewals post a fresh card and close the old one. Old card links remain useful for history but are not active search results.
+- The bot keeps a temporary in-memory SQLite index. Its own readable cards are the recoverable source of truth. Do not delete a card if you want to retain its listing/history.
+- After restart, the first search/publish lazily scans bot-authored cards from the last **24 hours**, newest first, with no arbitrary message-count cap. Ordinary member messages are ignored. Older original cards aren't needed for renewed offers, because renewal creates a new card.
+- Concurrent requests share one history scan per channel. While loading, results are labelled partial. Publishing waits briefly for a complete board scan to enforce the active limit; if loading continues, the draft stays available and the user can retry.
+- Successful scans are reused for two minutes. Searches check up to the 25 newest matching candidates against their current original cards and show five per page. Warm cached rows are checked for edits, deletion and owner ticks.
+- Public panel/card buttons are registered as persistent views at startup. Private drafts/search/manage views must be reopened after a restart.
 
-| Variable | Value |
-|---|---|
-| `DISCORD_TOKEN` | Your private bot token; enter only in Render |
-| `GUILD_ID` | Your Discord server ID, not the Application ID |
-| `TRADING_CHANNEL_IDS` | Trading channel IDs, separated by commas |
-| `DATABASE_PATH` | `:memory:` |
-| `SYNC_COMMANDS` | `1` for first deployment |
-| `EMOJI_MAP_JSON` | `{}` unless you use custom emoji-name overrides |
-| `PYTHON_VERSION` | `3.14.5` |
+The previous automatic indexing of member-written offers and old renewal-receipt format is discontinued. Those posts are not imported without Message Content approval. Members should create new cards through `/offer`.
 
-For example, `TRADING_CHANNEL_IDS=123456789012345678,234567890123456789`. Those are examples: replace them with your actual channel IDs. Enable Discord Developer Mode to copy server/channel IDs.
+## Render health and sleep
 
-The bot binds to `0.0.0.0` and Render's `PORT` automatically (default 10000). Do not set up a separate Flask/Gunicorn process or multiple workers: one process runs the web listener and Discord client together.
+The same process runs HTTP and the Discord client, binding to `0.0.0.0:$PORT` (default 10000).
 
-## 4. Deploy and inspect readiness
+- `/health` returns 200 when the web process is alive, with non-secret connection/configuration/cache status.
+- `/ready` returns 200 only when Discord is connected and configuration is valid; otherwise 503.
+- `/` explains how to wake the service and use the Trading Desk.
 
-Deploy, then open the service's `https://...onrender.com/` URL.
+Use `/health` for Render's health check. A sleeping Gateway bot cannot receive `/offer`, `/search` or button interactions to wake itself. First visit the service website, wait for `/ready`, then retry. This is not a 24/7 uptime guarantee or an external keep-alive service.
 
-- `/health`: HTTP 200 when the web process is alive. JSON reports Discord readiness, configuration readiness, temporary cache mode, loading status and history error count. It exposes no token, server IDs, seller IDs or trade contents.
-- `/ready`: HTTP 200 only when Discord is connected and startup configuration is valid; otherwise 503.
-- `/`: human-readable wake instructions.
+## Live launch checklist
 
-Configure Render's health check as `/health`, not `/ready`, so a slower Discord connection does not cause a restart loop. Invalid credentials make the process fail instead of silently leaving a disconnected web-only service running.
+1. Confirm Render logs show Ready as … and no PrivilegedIntentsRequired exception.
+2. `/status` shows the intended trading channel and 16/16 books when correctly named/uploaded.
+3. Post the panel with `/panel` in announcements; verify members can click Create offer.
+4. Select Time and Light, confirm requirements and publish. Verify only one public card is created even if Publish is clicked twice.
+5. Add `Ancient Sap x250` through Edit items; check quantities and original expiry.
+6. Search Time: the card appears. Search Light: it does not appear as a Light seller.
+7. Contact trader as another member: the profile/DM draft is private; no automatic DM is sent.
+8. React ✅ as a different member: no closure. React as the owner: the card closes and disappears from search.
+9. Try editing or renewing someone else's card: denied. Try a moderator close: permitted, then seller renewal denied.
+10. Restart Render. Old panel/card buttons still work. Search reconstructs open cards and keeps closed cards closed.
+11. Verify 3-offer limit and cooldowns. For a large channel, confirm loading notices appear instead of false empty results.
 
-After the first successful command registration, change `SYNC_COMMANDS` to `0` in Render and redeploy. Change it back to `1` only when shipping changed slash-command definitions, then return it to `0`. Autocomplete remains available without resyncing on every wake.
+This is a marketplace index, not game inventory/level verification. The game enforces eligibility, bag space and final acceptance. No item transfer, payment, trade-count awards, AI message reading, or game-shop stock feed is implemented.
 
-## 5. Check emojis and offers
-
-The 16 standard spellbook names (`cl_book_fire`, `cl_book_time`, etc.) map automatically from the server's emojis every time the bot connects. No repeated mapping step is necessary for those names. `/emoji_sync` previews matches; `/status` should show 16/16 books if all files were named correctly.
-
-Test:
-
-1. Post `Time => Light` in a configured trading channel; expect 🔎.
-2. `/search item:Time`: choose Time from autocomplete; expect a private result linking to that post.
-3. `/search item:Light`: the same post should not appear as a Light seller.
-4. Another member's ✅ must not close the listing.
-5. The author's ✅ must close it. The bot may also add its own ✅ to retain closed state.
-6. Remove the author's ✅, then `/renew message:<original message ID or link>` to reopen. The bot removes its own close tick and posts a short renewal receipt in Discord.
-7. React ✅ or use `/close` and restart/redeploy. The offer must stay absent after history reloads.
-8. Restart with a valid open offer still present. Search should recover it with its original expiry, not grant it a fresh 24 hours.
-
-## Lazy loading
-
-While online, new posts, edits, deletions and seller ticks update the temporary index. First search after waking starts a shared background scan of all messages in the **last 24 hours**, only in configured channels the requester can read. There is no arbitrary message-count cap. Renewals within that window can restore their older original post by ID.
-
-The command acknowledges immediately once the bot is connected. It waits briefly for the shared scan, then returns results already found, clearly labelled partial if loading continues. If nothing has loaded yet, it says to try again shortly; it does not claim no sellers exist. Slow history loading continues in the background, and simultaneous searches share the work. Warm history checks are reused for two minutes. Displayed results are still checked against their originals; up to 25 newest candidates are checked per search, five per result page.
-
-A very busy channel may take longer to scan because Discord paginates/rate-limits history. Cold starts cannot promise an instant final result. Missing permissions are reported as incomplete history, not an empty market. Use `/status` and Render logs to diagnose errors.
-
-## Recoverable state
-
-- Ordinary post creation time sets 24-hour expiry; edits do not extend it.
-- Actual seller ✅ reactions, ✅ in post text, bot-owned ✅ from `/close`, and bot-owned 🔒 from moderator closures keep closed listings out after a reset.
-- `/renew` writes a small bot-authored reply with a renewal marker and timestamp. Recovery trusts records from this bot's account only. Do not delete renewal receipts while the offer is active.
-- Removing the seller's tick alone does not reopen a post if the bot's close tick remains. `/renew` handles removing the bot tick. Moderator lock reactions block seller renewal.
-- An identical repost from the same seller supersedes older copies during both live indexing and newest-first recovery.
-- Deleting original posts removes them from future searches.
-
-This depends on the messages, reactions and receipts still existing in Discord. Manually removing those source records can change what can be recovered; there is no separate database backup in this version. Don't delete receipts or the bot's status reactions to clean up active listings.
-
-## Configuration across restarts
-
-Save channel IDs in **Render Environment**. `/setup` changes only the current session and tells you the updated `TRADING_CHANNEL_IDS` value to save in Render.
-
-Standard emoji filenames restore automatically. `/emoji_bind` creates a session override and shows JSON to save in **Render's `EMOJI_MAP_JSON`**. Custom bindings that exist only in RAM will be lost on sleep. Example override: `{"123456789012345678":"time"}`. Allowed targets are catalog item IDs, `separator`, or `offers`.
-
-## Scope and validation
-
-The catalog contains the supplied 76 tradeable items; 16 spellbooks have PNG artwork and the rest support text. No unrestricted AI interpretation, player inventory verification, trade-count awards, historic valuations or game-shop stock feed is claimed. The game enforces player level, bag capacity and final trade acceptance. Material stack maxima were not supplied, so the parser uses one slot per material type and does not invent stack limits.
-
-The offline suite and local health HTTP smoke check are included in the validation notes. Live Discord/Render tests still require your token and actual server/channel settings. Run locally with Python 3.11+ and `python -m unittest discover -s tests -v` to repeat offline checks.
-
-Sources: [Render Free sleep and ephemeral storage](https://render.com/docs/free), [Render Web Services and port binding](https://render.com/docs/web-services), [Discord application commands](https://docs.discord.com/developers/interactions/application-commands).
+Sources: [Discord own-message exception](https://docs.discord.com/developers/events/gateway#message-content-intent), [Render Free sleep](https://render.com/docs/free).

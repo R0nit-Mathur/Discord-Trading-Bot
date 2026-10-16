@@ -18,8 +18,8 @@ def make_app(status):
 <title>Clover Trading</title><style>body{font:18px system-ui;max-width:650px;margin:60px auto;padding:24px;background:#202225;color:#eee}a{color:#8fe2bc}</style>
 <h1>Clover Trading</h1><p>This visit wakes the service if Render put it to sleep.</p>
 <p><a href="/ready">Check Discord connection</a></p>
-<p>Once discord_ready and configured are true, return to Discord and use /search.
-The first search loads the last 24 hours of trading posts. If loading is still in progress, try /search again shortly.</p>
+<p>Once discord_ready and configured are true, return to Discord and use /offer to create a card or /search to find sellers.
+The first search loads the last 24 hours of bot-published trading cards. If loading is still in progress, try /search again shortly.</p>
 <p>A sleeping service cannot receive Discord Gateway commands. This page does not guarantee 24/7 uptime.</p></html>''', content_type='text/html', headers={'Cache-Control': 'no-store'})
 
     app.router.add_get('/', home)
